@@ -1,3 +1,5 @@
+package scienceportal;
+
 public interface ScienceEssayContributor {
     void contributeTo(ScienceEssayPublisher publisher);
 

@@ -1,8 +1,10 @@
+package scienceportal;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Publishers {
+class Publishers {
     private List<ScienceEssayPublisher> publishers;
 
     Publishers() {
@@ -36,7 +38,7 @@ public class Publishers {
         throw new IllegalArgumentException(String.format("You are not contributor of %s", publisherToSubmit.getName()));
     }
 
-    public void add(ScienceEssayPublisher publisher) {
+    void add(ScienceEssayPublisher publisher) {
         this.publishers.add(publisher);
     }
 

@@ -1,3 +1,5 @@
+package scienceportal;
+
 class CountSubmissionsQuery {
     private final Submissions submissions;
 

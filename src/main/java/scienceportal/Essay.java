@@ -1,3 +1,5 @@
+package scienceportal;
+
 import java.util.Objects;
 
 public class Essay {
@@ -23,7 +25,7 @@ public class Essay {
     }
 
 
-    public String getText() {
+    String getText() {
         return text;
     }
 }

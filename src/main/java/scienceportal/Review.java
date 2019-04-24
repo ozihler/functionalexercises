@@ -1,30 +1,32 @@
-public class Review {
+package scienceportal;
+
+class Review {
     private final Long submissionId;
     private final Author reviewer;
     private boolean accepted;
 
-    public Review(Long submissionId, Author reviewer) {
+    Review(Long submissionId, Author reviewer) {
         this.submissionId = submissionId;
         this.reviewer = reviewer;
     }
 
-    public void accept() {
+    void accept() {
         this.accepted = true;
     }
 
-    public void reject() {
+    void reject() {
         this.accepted = false;
     }
 
-    public boolean isAccepted() {
+    boolean isAccepted() {
         return accepted;
     }
 
-    public long getSubmissionId() {
+    long getSubmissionId() {
         return submissionId;
     }
 
-    public ScienceEssayReviewer getReviewer() {
+    ScienceEssayReviewer getReviewer() {
         return this.reviewer;
     }
 }

@@ -1,3 +1,5 @@
+package scienceportal;
+
 import java.util.Objects;
 import java.util.Set;
 
@@ -36,7 +38,7 @@ public class Submission {
         return reviews.count();
     }
 
-    public void add(Review review) {
+    void add(Review review) {
         this.reviews.add(review);
     }
 

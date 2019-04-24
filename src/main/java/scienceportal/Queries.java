@@ -1,3 +1,5 @@
+package scienceportal;
+
 class Queries {
     static CountSubmissionsQuery countSubmissions(Submissions submissions) {
         return new CountSubmissionsQuery(submissions);

@@ -1,9 +1,11 @@
+package scienceportal;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Reviews {
+class Reviews {
     private final List<Review> reviews;
 
     Reviews() {
@@ -14,11 +16,11 @@ public class Reviews {
         return reviews.size();
     }
 
-    public void add(Review review) {
+    void add(Review review) {
         this.reviews.add(review);
     }
 
-    public boolean contains(ScienceEssayReviewer reviewer) {
+    boolean contains(ScienceEssayReviewer reviewer) {
         boolean contains = false;
         for (Review review : reviews) {
             contains = review.getReviewer().equals(reviewer);

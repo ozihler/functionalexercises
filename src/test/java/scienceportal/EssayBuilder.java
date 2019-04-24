@@ -1,3 +1,5 @@
+package scienceportal;
+
 import java.util.Random;
 
 class EssayBuilder {

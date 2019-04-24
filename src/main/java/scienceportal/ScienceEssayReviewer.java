@@ -1,3 +1,5 @@
+package scienceportal;
+
 public interface ScienceEssayReviewer {
     void notifyAbout(Submission submission);
 

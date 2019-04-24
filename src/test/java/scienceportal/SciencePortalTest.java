@@ -1,10 +1,13 @@
+package scienceportal;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 @DisplayName("An science portal")
@@ -13,8 +16,8 @@ class SciencePortalTest {
     @DisplayName("can be queried for personally submitted essays")
     void testQueryAuthorsSubmissions() {
         SciencePortal acm = new SciencePortal("ACM");
-        Author author = new Author("Author 1");
-        Author otherAuthor = new Author("Author 2");
+        Author author = new Author("scienceportal.Author 1");
+        Author otherAuthor = new Author("scienceportal.Author 2");
 
         author.contributeTo(acm);
         author.reviewFor(acm);
@@ -22,7 +25,7 @@ class SciencePortalTest {
         otherAuthor.contributeTo(acm);
         otherAuthor.reviewFor(acm);
 
-        Essay essay1 = EssayBuilder.newEssay().withTitle("Simple Essay").complete();
+        Essay essay1 = EssayBuilder.newEssay().withTitle("Simple scienceportal.Essay").complete();
         Essay essay2 = EssayBuilder.newEssay().withTitle("Simple Essay2").complete();
         Essay essay3 = EssayBuilder.newEssay().withTitle("Simple Essay3").complete();
         author.submit(essay1, acm);
@@ -42,9 +45,9 @@ class SciencePortalTest {
                 )
         );
 
-        assertEquals(expected1, acm.getSubmissionsOf(author));
-        assertNotEquals(expected2, acm.getSubmissionsOf(author));
-        assertEquals(expected2, acm.getSubmissionsOf(otherAuthor));
+        Assertions.assertEquals(expected1, acm.getSubmissionsOf(author));
+        Assertions.assertNotEquals(expected2, acm.getSubmissionsOf(author));
+        Assertions.assertEquals(expected2, acm.getSubmissionsOf(otherAuthor));
 
         assertThrows(IllegalArgumentException.class, () -> acm.contribute(new Submission(null, null)));
 
@@ -54,8 +57,8 @@ class SciencePortalTest {
     @DisplayName("can be queried for number of submissions containing certain strings in their title")
     void testTitles() {
         SciencePortal acm = new SciencePortal("ACM");
-        Author author = new Author("Author 1");
-        Author otherAuthor = new Author("Author 2");
+        Author author = new Author("scienceportal.Author 1");
+        Author otherAuthor = new Author("scienceportal.Author 2");
 
         author.contributeTo(acm);
         author.reviewFor(acm);
@@ -63,15 +66,15 @@ class SciencePortalTest {
         otherAuthor.reviewFor(acm);
         String publisherName = acm.getName();
 
-        author.submit(EssayBuilder.newEssay().withTitle("First Essay").complete(), acm);
-        otherAuthor.submit(EssayBuilder.newEssay().withTitle("Second Third Essay").complete(), acm);
-        otherAuthor.submit(EssayBuilder.newEssay().withTitle("Second Fourth Essay").complete(), acm);
+        author.submit(EssayBuilder.newEssay().withTitle("First scienceportal.Essay").complete(), acm);
+        otherAuthor.submit(EssayBuilder.newEssay().withTitle("Second Third scienceportal.Essay").complete(), acm);
+        otherAuthor.submit(EssayBuilder.newEssay().withTitle("Second Fourth scienceportal.Essay").complete(), acm);
 
-        assertEquals(1, acm.countSubmissionsWithTitleContaining("First"));
-        assertEquals(2, acm.countSubmissionsWithTitleContaining("Second"));
-        assertEquals(1, acm.countSubmissionsWithTitleContaining("Third"));
-        assertEquals(1, acm.countSubmissionsWithTitleContaining("Fourth"));
-        assertEquals(3, acm.countSubmissionsWithTitleContaining("Essay"));
+        Assertions.assertEquals(1, acm.countSubmissionsWithTitleContaining("First"));
+        Assertions.assertEquals(2, acm.countSubmissionsWithTitleContaining("Second"));
+        Assertions.assertEquals(1, acm.countSubmissionsWithTitleContaining("Third"));
+        Assertions.assertEquals(1, acm.countSubmissionsWithTitleContaining("Fourth"));
+        Assertions.assertEquals(3, acm.countSubmissionsWithTitleContaining("scienceportal.Essay"));
     }
 
     @Test
@@ -104,7 +107,7 @@ class SciencePortalTest {
         ));
         SciencePortal acm = new SciencePortal("ACM", submissions);
 
-        assertEquals(Set.of(titleA, titleB, titleC), acm.getTitlesOfAllSubmissions());
+        Assertions.assertEquals(Set.of(titleA, titleB, titleC), acm.getTitlesOfAllSubmissions());
     }
 
     @Test
@@ -113,13 +116,13 @@ class SciencePortalTest {
         SciencePortal acm = new SciencePortal("ACM");
 
         Author author = new Author("x");
-        assertFalse(acm.isContributor(author));
+        Assertions.assertFalse(acm.isContributor(author));
 
         author.contributeTo(acm);
-        assertFalse(acm.isContributor(author));
+        Assertions.assertFalse(acm.isContributor(author));
 
         author.reviewFor(acm);
-        assertTrue(acm.isContributor(author));
+        Assertions.assertTrue(acm.isContributor(author));
 
     }
 }
